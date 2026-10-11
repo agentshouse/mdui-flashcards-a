@@ -3,6 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 const root = path.resolve(import.meta.dirname, '..');
+fs.mkdirSync(path.join(root, '.build'), { recursive: true });
 const donor = fs.readFileSync(path.join(root, 'LICENSE'), 'utf8');
 assert.equal(createHash('sha256').update(donor).digest('hex'), '206d5a0ab3aec79e0ac57deab6368a53a8256b9fc1c761beedcf9290d3f42410', 'Pinned donor license changed');
 const lock = JSON.parse(fs.readFileSync(path.join(root, 'package-lock.json'), 'utf8'));
@@ -24,6 +25,6 @@ for (const [relative, entry] of Object.entries(lock.packages)) {
 }
 for (const item of supplements) {const data = fs.readFileSync(path.join(root, 'public', item.file)); assert.equal(createHash('sha256').update(data).digest('hex'), item.sha256); notices.push(`\n${'='.repeat(72)}\n${item.name} ${item.version}\nSource: ${item.source}\n${item.note}\n\n${data.toString('utf8')}`);}
 fs.writeFileSync(path.join(root, 'public/THIRD_PARTY_NOTICES.txt'), notices.join('\n')+'\n');
-fs.writeFileSync(path.join(root, 'reports/license-audit.json'), JSON.stringify({donorCommit:'4005955f9fc6865f4eca20496ac15e36579b80d8', donorLicenseSha256:createHash('sha256').update(donor).digest('hex'), packages, supplements, missing}, null, 2)+'\n');
+fs.writeFileSync(path.join(root, '.build/license-audit.json'), JSON.stringify({donorCommit:'4005955f9fc6865f4eca20496ac15e36579b80d8', donorLicenseSha256:createHash('sha256').update(donor).digest('hex'), packages, supplements, missing}, null, 2)+'\n');
 console.log(JSON.stringify({packages: packages.length, missing}));
 assert.equal(missing.length, 0, 'Production package license texts require review');

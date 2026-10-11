@@ -35,6 +35,6 @@ for(let i=1;i<=9;i++)asset(`./artwork/card-${i}.svg`,path.join(dist,'index.html'
 for(const name of ['markdown-help.html','LICENSE.txt','THIRD_PARTY_NOTICES.txt'])asset('./'+name,path.join(dist,'index.html'));
 for(const file of files(path.join(root,'src'))){const source=fs.readFileSync(file,'utf8');assert(!/localStorage|connectMdRuntime|serveMdRuntime|createMemoryAdapter/.test(source),`Forbidden production API: ${file}`);}
 const report={result:'passed',files:output.length,bytes,mebibytes:+(bytes/1024/1024).toFixed(3),references:[...references],manifestSha256:createHash('sha256').update(JSON.stringify(manifest)).digest('hex'),networkScope:'Static entry, CSS, donor URLs, literal request audit and Markdown tests. Hosted network capture not yet run.',browser:'Hosted desktop/360px unverified',publication:'Static artifact audit; remote release and binding status verified separately'};
-fs.writeFileSync(path.join(root,'reports/release-audit.json'),JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync(path.join(root,'.build/release-audit.json'),JSON.stringify(report,null,2)+'\n');
 execFileSync(process.execPath,[path.join(root,'scripts/check-schema.mjs')],{cwd:root,stdio:'inherit'});
 console.log(JSON.stringify(report,null,2));

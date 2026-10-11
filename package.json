@@ -14,6 +14,8 @@
     "theme:check": "node scripts/check-markdown-theme.mjs",
     "prebuild": "node scripts/prepare-release.mjs",
     "notices": "node scripts/generate-notices.mjs",
+    "starter:check": "node scripts/check-starter.mjs",
+    "verify": "npm run typecheck && npm run lint && npm test -- --maxWorkers=1 && npm run starter:check && npm run theme:check && npm run build && npm run release:check",
     "publish": "node publish.mjs"
   },
   "dependencies": {
@@ -51,5 +53,8 @@
     "@vitest/coverage-v8": "^4.0.15",
     "tailwindcss": "^4.1.17"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.21.0"
+  }
 }

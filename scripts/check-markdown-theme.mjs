@@ -75,5 +75,6 @@ const report = {
   helperPalette: theme, helperContrast,
   helperCalculation: 'OKLCH converted to linear sRGB and clamped; static reference surfaces, not composited browser measurements',
 };
-fs.writeFileSync(path.join(root, 'reports/markdown-theme-cascade.json'), JSON.stringify(report, null, 2) + '\n');
+fs.mkdirSync(path.join(root, '.build'), { recursive: true });
+fs.writeFileSync(path.join(root, '.build/markdown-theme-cascade.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify(report, null, 2));
