@@ -13,6 +13,7 @@ npm run lint
 npm test
 npm run build
 npm run release:check
+npm run theme:check
 ```
 
 Node 24.19.0 was used. Published House model/runtime packages ask for >=24.21.0; Master has confirmed the older build-time Node warning is harmless. Prefer the declared Node version on new environments. No npm audit was run.

@@ -92,7 +92,7 @@ const Home = () => {
                 <div className="text-3xl sm:text-2xl font-light tracking-tight mb-2 text-zinc-900 group-hover:text-zinc-700 transition-colors">
                   {stat.value}
                 </div>
-                <div className="text-xs sm:text-sm tracking-wide uppercase text-zinc-400">
+                <div className="text-xs sm:text-sm tracking-wide uppercase text-zinc-600">
                   {stat.label}
                 </div>
               </div>
@@ -246,7 +246,7 @@ const Home = () => {
                     <div className="font-light tracking-tight mb-1">
                         {q.author}
                     </div>
-                    <div className="text-sm tracking-wide text-zinc-400">
+                    <div className="text-sm tracking-wide text-zinc-600">
                         {q.role}
                     </div>
                     </div>
@@ -287,7 +287,7 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div className="text-center mt-12 text-sm tracking-wide text-zinc-400">
+          <div className="text-center mt-12 text-sm tracking-wide text-zinc-600">
             Flashcards · Based on MIT-licensed work by Chris Carrington.
           </div>
         </div>

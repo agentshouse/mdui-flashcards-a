@@ -25,7 +25,7 @@ export default function CardForm({initial, values, onFieldChange, onSubmit, subm
   const formSubmit = handleSubmit(async (input) => {setError(null); try {await onSubmit(input);} catch (e) {setError(e instanceof Error ? e.message : String(e));}});
 
     return (
-        <form onSubmit={formSubmit} className="space-y-4 pt-4">
+        <form onSubmit={formSubmit} className="space-y-4 pt-4" data-color-mode="light">
             {error && <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-800">{error}</p>}
             {Object.entries(errors).map(([key, value]) => <p key={key} role="alert" className="text-red-800">{key}: {value.message}</p>)}
             <div>

@@ -90,13 +90,13 @@ export default function Layout({
           absolute md:static z-30 w-64 shrink-0 min-h-[calc(100vh-7rem)] border-r shadow-xl md:shadow-none bg-indigo-50 border-zinc-900/5
         `}>
           <nav className="p-8">
-            <p className="mb-6 text-xs tracking-wider uppercase font-medium text-zinc-400">
+            <p className="mb-6 text-xs tracking-wider uppercase font-medium text-zinc-600">
               Collections
             </p>
 
             <ul className="space-y-1">
               {deckLinks.length === 0 && (
-                <li className="text-sm py-3 px-4 text-zinc-400">
+                <li className="text-sm py-3 px-4 text-zinc-600">
                   No decks yet
                 </li>
               )}

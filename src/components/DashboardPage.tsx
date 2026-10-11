@@ -119,7 +119,7 @@ function DeckCard({ deck, isDark }: { deck: Deck; isDark: boolean }) {
               numberOfCardsToStudy > 0 ? "bg-emerald-500 animate-pulse" : "bg-zinc-400"
             }`} />
             <span className={`text-xs tracking-wider uppercase font-medium ${
-              isDark ? "text-zinc-500" : "text-zinc-400"
+              isDark ? "text-zinc-500" : "text-zinc-600"
             }`}>
               Collection
             </span>
@@ -145,7 +145,7 @@ function DeckCard({ deck, isDark }: { deck: Deck; isDark: boolean }) {
 
         {/* Meta */}
         <div className={`relative flex items-center justify-between text-xs tracking-wide pt-6 border-t ${
-          isDark ? "text-zinc-500 border-white/5" : "text-zinc-400 border-zinc-900/5"
+          isDark ? "text-zinc-500 border-white/5" : "text-zinc-600 border-zinc-900/5"
         }`}>
           <span className="flex items-center gap-2">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

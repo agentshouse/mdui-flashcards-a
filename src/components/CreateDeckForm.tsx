@@ -55,13 +55,13 @@ export default function CreateDeckForm({
                 focus:outline-none focus:ring-2 transition-all
                 ${isDark
                   ? "bg-white/5 border-white/10 text-white placeholder:text-zinc-600 focus:ring-white/20 focus:border-white/20"
-                  : "bg-white border-zinc-900/10 text-zinc-900 placeholder:text-zinc-400 focus:ring-zinc-900/10 focus:border-zinc-900/20"
+                  : "bg-white border-zinc-900/10 text-zinc-900 placeholder:text-zinc-600 focus:ring-zinc-900/10 focus:border-zinc-900/20"
                 }
               `}
               placeholder="e.g., Spanish Vocabulary, Computer Science, Medical Terms"
             />
             <p className={`mt-3 text-sm ${
-              isDark ? "text-zinc-500" : "text-zinc-400"
+              isDark ? "text-zinc-500" : "text-zinc-600"
             }`}>
               Choose a descriptive name for your flashcard collection
             </p>

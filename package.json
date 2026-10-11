@@ -11,6 +11,7 @@
     "test": "vitest run",
     "typecheck": "tsc -b && tsc -p tsconfig.test.json --noEmit",
     "release:check": "node scripts/check-release.mjs",
+    "theme:check": "node scripts/check-markdown-theme.mjs",
     "prebuild": "node scripts/prepare-release.mjs",
     "notices": "node scripts/generate-notices.mjs"
   },

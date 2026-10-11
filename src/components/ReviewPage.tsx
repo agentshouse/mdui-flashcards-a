@@ -235,7 +235,7 @@ export function ReviewPage({studyMode}: ReviewPageProps) {
                                     style={{width: `${progress}%`}}
                                 />
                             </div>
-                            <p className={`text-xs mt-3 ${isDark ? "text-zinc-500" : "text-zinc-400"}`}>
+                            <p className={`text-xs mt-3 ${isDark ? "text-zinc-500" : "text-zinc-600"}`}>
                                 {Math.round(progress)}% complete
                             </p>
                         </div>
@@ -255,14 +255,14 @@ export function ReviewPage({studyMode}: ReviewPageProps) {
                                 <div className="grid grid-cols-2 gap-4 items-center justify-between mb-8">
                                     {phase === "front" && (
                                         <span className={`text-xs tracking-wider uppercase font-medium ${
-                                            isDark ? "text-zinc-500" : "text-zinc-400"
+                                            isDark ? "text-zinc-500" : "text-zinc-600"
                                         }`}>
                                           Question
                                         </span>
                                     )}
                                     {phase === "back" && (
                                         <span className={`text-xs tracking-wider uppercase font-medium ${
-                                            isDark ? "text-zinc-500" : "text-zinc-400"
+                                            isDark ? "text-zinc-500" : "text-zinc-600"
                                         }`}>
                                           Answer
                                         </span>

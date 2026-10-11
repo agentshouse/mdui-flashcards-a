@@ -12,6 +12,8 @@ import {Modal} from '../src/components/Modal';
 import {ViewDeckPage} from '../src/components/ViewDeckPage';
 import {ReviewPage} from '../src/components/ReviewPage';
 import Home from '../src/components/Home';
+import {DashboardPage} from '../src/components/DashboardPage';
+import Layout from '../src/components/Layout';
 
 // Actual donor components, editors, router, forms, and dialogs run in jsdom.
 // Only the House store/context boundaries are mocked. These are not visual or
@@ -137,6 +139,22 @@ describe('donor forms with House failures', () => {
     expect(submit).toHaveBeenCalledTimes(1);
     await act(async () => pending.resolve());
     expect((screen.getByRole('button', {name: 'Create Collection'}) as HTMLButtonElement).disabled).toBe(false);
+  });
+});
+
+describe('light-surface helper text contrast', () => {
+  it.each(['home', 'layout', 'dashboard', 'create', 'collection', 'review'])('uses the stronger gray for meaningful labels on %s', page => {
+    boundary.update({cards: [card()]});
+    const view = page === 'collection' ? route(<ViewDeckPage/>)
+      : page === 'review' ? route(<ReviewPage studyMode={false}/>, '/review')
+      : render(<MemoryRouter>{page === 'home' ? <Home/>
+        : page === 'layout' ? <Layout><p>Contents</p></Layout>
+        : page === 'dashboard' ? <DashboardPage/>
+        : <CreateDeckForm onSubmit={async () => {}}/>}</MemoryRouter>);
+    const paleText = [...view.container.querySelectorAll('.text-zinc-400')].filter(element => element.namespaceURI !== 'http://www.w3.org/2000/svg');
+    expect(paleText.map(element => element.textContent)).toEqual([]);
+    expect(view.container.querySelectorAll('.text-zinc-600').length).toBeGreaterThan(0);
+    if (page === 'create') expect(screen.getByLabelText('Collection Name').classList.contains('placeholder:text-zinc-600')).toBe(true);
   });
 });
 
