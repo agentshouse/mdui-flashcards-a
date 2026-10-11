@@ -414,3 +414,111 @@ describe('modal keyboard and focus behavior', () => {
     expect(document.activeElement).toBe(trigger);
   });
 });
+
+
+describe('full-card reading without editing or grading', () => {
+  const longQuestion = 'Почему полная формулировка вопроса должна быть доступна читателю? '.repeat(24);
+  const questionEnd = 'Последняя строка длинного вопроса видна полностью.';
+  const answerEnd = 'Последняя строка подробного ответа тоже доступна.';
+  const longCard = () => card(1, {front: `${longQuestion}
+
+${questionEnd}`, back: `${'Подробное объяснение ответа. '.repeat(40)}
+
+${answerEnd}`});
+
+  it('opens complete long Russian Markdown from an always-visible separate control and never opens an editor', async () => {
+    const initial = [longCard()];
+    boundary.update({cards: initial});
+    route(<ViewDeckPage/>);
+    const expand = await screen.findByRole('button', {name: 'Expand card'});
+    expect(expand.getAttribute('aria-haspopup')).toBe('dialog');
+    expect(expand.className).not.toMatch(/opacity-0/);
+    expect(expand.closest('[role="button"]')).toBeNull();
+    fireEvent.click(expand);
+    const dialog = screen.getByRole('dialog', {name: 'Full card'});
+    expect(dialog.parentElement).toBe(document.body);
+    expect(document.body.style.overflow).toBe('hidden');
+    const body = within(dialog).getByRole('region', {name: 'Full card text'});
+    expect(body.textContent).toContain(questionEnd);
+    expect(body.querySelector('.wmde-markdown')?.textContent).toContain(longQuestion.trim());
+    expect(body.querySelector('[class*="line-clamp"]')).toBeNull();
+    expect(body.querySelector('.wmde-markdown')?.getAttribute('data-color-mode')).toBe('light');
+    expect(within(dialog).queryByRole('textbox')).toBeNull();
+    fireEvent.click(within(dialog).getByRole('button', {name: 'Show answer'}));
+    expect(body.textContent).toContain(answerEnd);
+    fireEvent.click(within(dialog).getByRole('button', {name: 'Show question'}));
+    expect(body.textContent).toContain(questionEnd);
+    expect(boundary.openEditor).not.toHaveBeenCalled();
+    expect(boundary.upsertCard).not.toHaveBeenCalled();
+    expect(boundary.snapshot().cards).toEqual(initial);
+  });
+
+  it('preserves grid flipping and opens the currently visible face', async () => {
+    boundary.update({cards: [card()]});
+    route(<ViewDeckPage/>);
+    const showAnswer = await screen.findByRole('button', {name: 'Show answer'});
+    expect(showAnswer.tagName).toBe('BUTTON');
+    fireEvent.click(showAnswer);
+    expect(screen.getByRole('button', {name: 'Show question'})).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', {name: 'Expand card'}));
+    const dialog = screen.getByRole('dialog', {name: 'Full card'});
+    expect(within(dialog).getByRole('region').textContent).toContain('Answer 1');
+    fireEvent.click(within(dialog).getByRole('button', {name: 'Close'}));
+    expect(screen.getByRole('button', {name: 'Show question'})).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', {name: 'Show question'}));
+    expect(screen.getByRole('button', {name: 'Show answer'})).toBeTruthy();
+  });
+
+  it('traps focus, resets scroll for each side, restores focus after observed updates and supports reopening', async () => {
+    boundary.update({cards: [longCard()]});
+    route(<ViewDeckPage/>);
+    const expand = await screen.findByRole('button', {name: 'Expand card'});
+    expand.focus(); fireEvent.click(expand);
+    const dialog = screen.getByRole('dialog', {name: 'Full card'});
+    const close = within(dialog).getByRole('button', {name: 'Close'});
+    const switchSide = within(dialog).getByRole('button', {name: 'Show answer'});
+    await waitFor(() => expect(document.activeElement).toBe(close));
+    fireEvent.keyDown(document, {key: 'Tab', shiftKey: true});
+    expect(document.activeElement).toBe(switchSide);
+    fireEvent.keyDown(document, {key: 'Tab'});
+    expect(document.activeElement).toBe(close);
+    const body = within(dialog).getByRole('region');
+    body.scrollTop = 400;
+    fireEvent.click(within(dialog).getByRole('button', {name: 'Answer'}));
+    expect(body.scrollTop).toBe(0);
+    act(() => boundary.update({cards: [longCard()], version: 1}));
+    fireEvent.keyDown(document, {key: 'Escape'});
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(document.activeElement).toBe(expand);
+    expect(document.body.style.overflow).not.toBe('hidden');
+    fireEvent.click(expand);
+    expect(within(screen.getByRole('dialog')).getByRole('region').textContent).toContain(questionEnd);
+    fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', {name: 'Close'}));
+    expect(document.activeElement).toBe(expand);
+    expect(boundary.openEditor).not.toHaveBeenCalled();
+  });
+
+  it('uses the observed current card and dismisses cleanly if that card disappears', async () => {
+    boundary.update({cards: [card()]});
+    route(<ViewDeckPage/>);
+    fireEvent.click(await screen.findByRole('button', {name: 'Expand card'}));
+    act(() => boundary.update({cards: [card(1, {front: 'Updated externally'})], version: 1}));
+    expect(within(screen.getByRole('dialog')).getByText('Updated externally')).toBeTruthy();
+    act(() => boundary.update({cards: [], version: 2}));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(screen.getByRole('button', {name: 'Create First Card'})).toBeTruthy();
+    expect(boundary.upsertCard).not.toHaveBeenCalled();
+  });
+
+  it('keeps the existing edit route independent of the reader and flips', async () => {
+    boundary.update({cards: [card()]});
+    route(<ViewDeckPage/>);
+    const edit = (await screen.findAllByRole('button', {name: 'Edit card'}))[0];
+    fireEvent.click(edit);
+    expect(screen.getByRole('dialog', {name: 'Edit Card'})).toBeTruthy();
+    expect(screen.queryByRole('dialog', {name: 'Full card'})).toBeNull();
+    expect(screen.getByRole('button', {name: 'Show answer'})).toBeTruthy();
+    await waitFor(() => expect(boundary.openEditor).toHaveBeenCalledTimes(1));
+    expect(boundary.upsertCard).not.toHaveBeenCalled();
+  });
+});

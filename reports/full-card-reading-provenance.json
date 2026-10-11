@@ -1,0 +1,15 @@
+{
+  "scope": "Full-card reading adaptation; source provenance, not visual equivalence",
+  "donorCommit": "4005955f9fc6865f4eca20496ac15e36579b80d8",
+  "donorCssExactPrefix": true,
+  "donorCssBytes": 3791,
+  "donorCssSHA256": "662a6187c8a60a9aae9e68214e3321696d7de7170bd182c2a247d663151909df",
+  "donorLicenseExact": true,
+  "donorLicenseSHA256": "206d5a0ab3aec79e0ac57deab6368a53a8256b9fc1c761beedcf9290d3f42410",
+  "files": {
+    "src/components/ViewDeckPage.tsx": "cd5160eb21a7d4a51769ea26de8098c07ac7eab6f543ae99f9a4a787f6a6925f",
+    "src/components/Modal.tsx": "961f5b14982330b747cc821a2ab707b300691e4caed07f855935eb54e022520d",
+    "src/components/CardReader.tsx": "87ae7a3729f170de58e0f5cbd9445d322617ff36dad797bcc47788a4c0d1bf68",
+    "src/index.css": "b41ab7784066772bfffd2be9276ae1a797823db20bb1b2719bdeb68da639823f"
+  }
+}

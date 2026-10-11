@@ -5,6 +5,7 @@ import type {Card, Deck} from "../data/model.ts";
 import {dataStore} from "../data/house.ts";
 import {useEditorDraft} from "../data/useEditorDraft";
 import {CardModal} from "./CardModal.tsx";
+import {CardReader} from "./CardReader";
 import {ConfirmModal} from "./ConfirmModal.tsx";
 import {useDataStore} from "../context/DataContext.tsx";
 
@@ -334,7 +335,7 @@ export function ViewDeckPage() {
 
                 {/* Cards Grid */}
                 {deckCards.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                         {displayedCards.map((card) => (
                             <FlipCard
                                 key={card.id}
@@ -358,14 +359,11 @@ export function ViewDeckPage() {
 
 function FlipCard({card, onEdit, onDelete}: {card: Card, onEdit: () => void, onDelete: () => void}) {
     const [isFlipped, setIsFlipped] = useState(false);
+    const [reading, setReading] = useState(false);
 
     return (
-        <div
-            role="button" tabIndex={0} aria-label={isFlipped ? "Show question" : "Show answer"}
-            onKeyDown={event => {if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {event.preventDefault(); setIsFlipped(value => !value);}}}
-            className="group relative h-52 cursor-pointer perspective-1000"
-            onClick={() => setIsFlipped(!isFlipped)}
-        >
+        <article className="group relative min-w-0">
+        <div className="relative cursor-pointer perspective-1000" onClick={() => setIsFlipped(value => !value)}>
             {/* Floating gradient orbs - faster */}
             <div className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none will-change-opacity">
                 <div className="absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl bg-blue-500/30" />
@@ -373,13 +371,14 @@ function FlipCard({card, onEdit, onDelete}: {card: Card, onEdit: () => void, onD
             </div>
 
             <div
-                className={`relative w-full h-full transition-transform duration-300 ease-out transform-style-3d will-change-transform ${
+                className={`relative grid min-h-72 w-full transition-transform duration-300 ease-out transform-style-3d will-change-transform ${
                     isFlipped ? "rotate-y-180" : ""
                 }`}
             >
                 {/* Front */}
                 <div
-                    className={`absolute inset-0 w-full h-full backface-hidden ${
+                    aria-hidden={isFlipped} inert={isFlipped}
+                    className={`col-start-1 row-start-1 min-w-0 w-full h-full backface-hidden ${
                         isFlipped ? "pointer-events-none" : ""
                     }`}
                 >
@@ -426,23 +425,24 @@ function FlipCard({card, onEdit, onDelete}: {card: Card, onEdit: () => void, onD
                         </div>
 
                         <div className="relative flex-1 flex items-center justify-center px-2 z-10">
-                            <div className="text-center text-base sm:text-lg font-light tracking-tight text-zinc-900 line-clamp-4 leading-relaxed">
+                            <div className="text-center text-base sm:text-lg font-light tracking-tight text-zinc-900 line-clamp-6 leading-relaxed">
                                 <SafeMarkdown source={card.front}/>
                             </div>
                         </div>
 
-                        <div className="relative text-center text-[11px] tracking-wide text-zinc-600 mt-3 z-10 flex items-center justify-center gap-2">
+                        <button type="button" aria-label="Show answer" onClick={event => {event.stopPropagation(); setIsFlipped(true);}} className="relative text-center text-sm tracking-wide text-zinc-600 mt-4 z-10 flex items-center justify-center gap-2 rounded-lg py-2">
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
                             Click to reveal
-                        </div>
+                        </button>
                     </div>
                 </div>
 
                 {/* Back */}
                 <div
-                    className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 ${
+                    aria-hidden={!isFlipped} inert={!isFlipped}
+                    className={`col-start-1 row-start-1 min-w-0 w-full h-full backface-hidden rotate-y-180 ${
                         !isFlipped ? "pointer-events-none" : ""
                     }`}
                 >
@@ -460,7 +460,7 @@ function FlipCard({card, onEdit, onDelete}: {card: Card, onEdit: () => void, onD
                                 Answer
                             </span>
 
-                            <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-100">
+                            <div className="flex gap-1.5 opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-100">
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
@@ -489,20 +489,27 @@ function FlipCard({card, onEdit, onDelete}: {card: Card, onEdit: () => void, onD
                         </div>
 
                         <div className="relative flex-1 flex items-center justify-center px-2 z-10">
-                            <div className="text-center text-base sm:text-lg font-light tracking-tight text-zinc-900 line-clamp-4 leading-relaxed">
+                            <div className="text-center text-base sm:text-lg font-light tracking-tight text-zinc-900 line-clamp-6 leading-relaxed">
                                 <SafeMarkdown source={card.back}/>
                             </div>
                         </div>
 
-                        <div className="relative text-center text-[11px] tracking-wide text-zinc-600 mt-3 z-10 flex items-center justify-center gap-2">
+                        <button type="button" aria-label="Show question" onClick={event => {event.stopPropagation(); setIsFlipped(false);}} className="relative text-center text-sm tracking-wide text-zinc-600 mt-4 z-10 flex items-center justify-center gap-2 rounded-lg py-2">
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
                             Click to flip back
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
+
+        </div>
+        <button type="button" onClick={() => setReading(true)} aria-haspopup="dialog" className="mt-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl border border-indigo-200 bg-white/90 px-4 py-2.5 text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 transition-colors">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            Expand card
+        </button>
+        {reading && <CardReader card={card} initialSide={isFlipped ? "back" : "front"} onClose={() => setReading(false)}/>}
 
             <style>{`
                 .perspective-1000 {
@@ -526,6 +533,6 @@ function FlipCard({card, onEdit, onDelete}: {card: Card, onEdit: () => void, onD
                     will-change: opacity;
                 }
             `}</style>
-        </div>
+        </article>
     );
 }

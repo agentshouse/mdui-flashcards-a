@@ -124,3 +124,11 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 
 body { padding-bottom: 4rem; }
+
+/* User-requested full-card reading surface; keep the donor card/editor palette. */
+.card-reading-dialog { max-width: 52rem; height: min(48rem, calc(100dvh - 2rem)); max-height: calc(100dvh - 2rem); background: #fff; color: #18181b; }
+.card-reading-content { overscroll-behavior: contain; scrollbar-gutter: stable; }
+.card-reading-content .wmde-markdown { font-size: clamp(1.125rem, 1.05rem + .3vw, 1.25rem); line-height: 1.75; text-align: left; }
+.card-reading-content .wmde-markdown pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.card-reading-content .wmde-markdown table { max-width: 100%; overflow-x: auto; }
+@media (max-width: 639px) { .card-reading-content { padding-inline: 1rem; } }
