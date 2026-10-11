@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {verify, validate} from '@agentshouse/mdmodel';
+const checked = verify(fs.readFileSync('schema.yaml','utf8'));
+assert.equal(checked.verdict, 'accept', JSON.stringify(checked));
+const samples = JSON.parse(fs.readFileSync('scripts/sample-documents.json','utf8'));
+const library = Object.fromEntries(samples.map(item => [item.path,fs.readFileSync(`samples/${item.path}`,'utf8')]));
+const valid = validate(library, undefined, checked.model);
+assert.equal(valid.verdict,'accept',JSON.stringify(valid));
+console.log(JSON.stringify({schema:'accepted',sampleDocuments:samples.length,referenceValidation:'accepted',liveRoom:'not checked by this local validator'}));

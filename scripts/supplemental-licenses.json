@@ -1,0 +1,58 @@
+[
+  {
+    "name": "@cfworker/json-schema",
+    "version": "4.1.1",
+    "source": "https://github.com/cfworker/cfworker/blob/5409fdc2bd144f68e8b28c61c71fcb16600000a6/LICENSE.md",
+    "file": "licenses/cfworker-json-schema-MIT.txt",
+    "sha256": "376944252ab78ca6b41aee44ddea8894927ee67891e77e61eb9d59af63e35094",
+    "note": "Verified upstream publication license copied from prior port\u2019s audited supplemental notice."
+  },
+  {
+    "name": "@uiw/react-markdown-preview",
+    "version": "5.1.5",
+    "source": "https://raw.githubusercontent.com/uiwjs/react-markdown-preview/a41471e9c6ca90e14b731671c53d3df9594c940e/LICENSE",
+    "file": "licenses/uiw-react-markdown-preview.txt",
+    "sha256": "e62f81756588d7540b2a68b940980cbdefb4c8ed9fc1c6b95582a50e1af742bd",
+    "note": "Upstream publication gitHead."
+  },
+  {
+    "name": "@uiw/react-md-editor",
+    "version": "4.0.11",
+    "source": "https://raw.githubusercontent.com/uiwjs/react-md-editor/2cf10e6c7dcf4f490371070f61ab80f3d41c34bf/LICENSE",
+    "file": "licenses/uiw-react-md-editor.txt",
+    "sha256": "e62f81756588d7540b2a68b940980cbdefb4c8ed9fc1c6b95582a50e1af742bd",
+    "note": "Upstream publication gitHead."
+  },
+  {
+    "name": "boolbase",
+    "version": "1.0.0",
+    "source": "https://raw.githubusercontent.com/fb55/boolbase/master/LICENSE",
+    "file": "licenses/boolbase.txt",
+    "sha256": "cdf4d87ae0a6c160227263bf4e39a0a10e30e89ae7256e0f7ac7bde0836552c6",
+    "note": "Upstream current grant; package1.0.0 does not publish a gitHead."
+  },
+  {
+    "name": "remark-github-blockquote-alert",
+    "version": "1.3.1",
+    "file": "licenses/remark-github-blockquote-alert.txt",
+    "source": "https://github.com/jaywcjlove/remark-github-blockquote-alert/blob/bb71a22d33ff6118d91531ac118bac8445625530/README.md#license",
+    "sha256": "fabc4ccf52f69e61e118564615f3c0f6a98672db939e7bb45e872787769ad6ce",
+    "note": "Verbatim distributed README license section. It expressly declares MIT and names the copyright holder; this package publishes no separate license-text file."
+  },
+  {
+    "name": "Font Awesome Free icons within @uiw/react-md-editor",
+    "version": "6.4.2",
+    "file": "licenses/font-awesome-6.4.2.txt",
+    "source": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.4.2/LICENSE.txt",
+    "sha256": "0aa8f86525273b2efa4f40f4272a188e187704252170e979dc06879adf68d43c",
+    "note": "Explicit CC BY4.0 license for the bundled table/issue SVG icons; unmodified upstream icon paths and attribution."
+  },
+  {
+    "name": "Font Awesome Free icons within @uiw/react-md-editor",
+    "version": "6.7.2",
+    "file": "licenses/font-awesome-6.7.2.txt",
+    "source": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.7.2/LICENSE.txt",
+    "sha256": "9b914eae88817d63b576eab5aafde7068c7a1abae125d7cdfb034f1da43a9afc",
+    "note": "Explicit CC BY4.0 license for the bundled table/issue SVG icons; unmodified upstream icon paths and attribution."
+  }
+]

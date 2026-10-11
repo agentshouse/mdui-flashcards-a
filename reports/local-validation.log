@@ -1,0 +1,105 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> house-flashcards@0.0.0 typecheck
+> tsc -b && tsc -p tsconfig.test.json --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> house-flashcards@0.0.0 lint
+> eslint .
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> house-flashcards@0.0.0 test
+> vitest run
+
+
+ RUN  v4.0.15 /workspace/scratch/364b78933bbf/ports/barabara
+
+ ✓ test/house-store.test.ts (48 tests) 133ms
+ ✓ test/schedule-security.test.tsx (23 tests) 89ms
+ ✓ test/ui-flows.test.tsx (17 tests) 6916ms
+     ✓ validates both card faces and keeps the complete draft after a failed save  560ms
+     ✓ does not close a newly opened modal or replace its draft when an old save resolves  453ms
+     ✓ shows the newly created card after 0 existing cards  420ms
+     ✓ shows the newly created card after 12 existing cards  1214ms
+     ✓ shows the created UUIDv7 card on its observed page without a duplicate  1233ms
+     ✓ reviews all cards including future cards, supports back/restart, and never grades  967ms
+
+ Test Files  3 passed (3)
+      Tests  88 passed (88)
+   Start at  13:25:09
+   Duration  8.45s (transform 556ms, setup 0ms, import 1.95s, tests 7.14s, environment 1.27s)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> house-flashcards@0.0.0 prebuild
+> node scripts/prepare-release.mjs
+
+{"packages":177,"missing":[]}
+
+> house-flashcards@0.0.0 build
+> tsc -b && vite build
+
+vite v7.2.7 building client environment for production...
+transforming...
+✓ 943 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.46 kB │ gzip:   0.30 kB
+dist/assets/index-Dw8GIRU0.css    110.71 kB │ gzip:  17.92 kB
+dist/assets/index-BNpBEzub.js   1,677.43 kB │ gzip: 539.35 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.41s
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> house-flashcards@0.0.0 release:check
+> node scripts/check-release.mjs
+
+{"schema":"accepted","sampleDocuments":24,"referenceValidation":"accepted","liveRoom":"not created"}
+{
+  "result": "passed",
+  "files": 25,
+  "bytes": 2067045,
+  "mebibytes": 1.971,
+  "references": [
+    "icon.svg",
+    "assets/index-BNpBEzub.js",
+    "assets/index-Dw8GIRU0.css",
+    "artwork/card-1.svg",
+    "artwork/card-2.svg",
+    "artwork/card-3.svg",
+    "artwork/card-4.svg",
+    "artwork/card-5.svg",
+    "artwork/card-6.svg",
+    "artwork/card-7.svg",
+    "artwork/card-8.svg",
+    "artwork/card-9.svg",
+    "markdown-help.html",
+    "LICENSE.txt",
+    "THIRD_PARTY_NOTICES.txt"
+  ],
+  "manifestSha256": "ff09ecced42d7c2281d8f8e592e6bfb7cbc463f945e64f4f8897e8fe1633c531",
+  "networkScope": "Static entry, CSS, donor URLs, literal request audit and Markdown tests. Hosted network capture not yet run.",
+  "browser": "Hosted desktop/360px unverified",
+  "publication": "No Room/App allocated; no push or release branch"
+}

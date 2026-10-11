@@ -1,0 +1,26 @@
+import {act,cleanup,fireEvent,render,screen} from '@testing-library/react';
+import {afterEach,expect,it,vi} from 'vitest';
+import App from '../src/App';
+vi.mock('../src/context/DataContext',()=>({DataProvider:({children}:{children:import('react').ReactNode})=>children,useDataStore:()=>({decks:[{id:'one',name:'One collection'}]})}));
+vi.mock('../src/components/DashboardPage',()=>({DashboardPage:()=> <h1>Dashboard page</h1>}));
+vi.mock('../src/components/CreateDeckPage',()=>({CreateDeckPage:()=> <h1>Create page</h1>}));
+vi.mock('../src/components/ViewDeckPage',()=>({ViewDeckPage:()=> <h1>Collection page</h1>}));
+vi.mock('../src/components/ReviewPage',()=>({ReviewPage:()=> <h1>Review page</h1>}));
+vi.mock('../src/components/Home',()=>({default:()=> <h1>Landing page</h1>}));
+afterEach(cleanup);
+it('navigates collection pages with the same persistent donor header and sidebar',async()=>{
+  window.location.hash='#/dashboard';render(<App/>);
+  const logo=screen.getByRole('link',{name:'FLASHCARDS'});
+  const sidebar=screen.getByRole('navigation');
+  expect(screen.getByRole('link',{name:'New Deck'}).getAttribute('href')).toBe('#/create-deck');
+  fireEvent.click(screen.getByRole('link',{name:'New Deck'}));
+  await screen.findByText('Create page');
+  expect(screen.getByRole('link',{name:'FLASHCARDS'})).toBe(logo);
+  expect(screen.getByRole('navigation')).toBe(sidebar);
+  fireEvent.click(screen.getByRole('link',{name:'One collection'}));
+  await screen.findByText('Collection page');
+  expect(screen.getByRole('link',{name:'FLASHCARDS'})).toBe(logo);
+  await act(async()=>{window.location.hash='#/dashboard';window.dispatchEvent(new HashChangeEvent('hashchange'));});
+  await screen.findByText('Dashboard page');
+  expect(screen.getByRole('navigation')).toBe(sidebar);
+});

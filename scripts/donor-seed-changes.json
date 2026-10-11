@@ -1,0 +1,115 @@
+{
+  "room_handle_required": true,
+  "changes": [
+    {
+      "op": "create",
+      "path": "decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md",
+      "content": "---\ntype: flashcard_deck\nid: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nname: \"Example Deck\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/c6bbe37d-a33f-56b8-965a-d5e8f7d78a66.md",
+      "content": "---\ntype: flashcard_card\nid: \"c6bbe37d-a33f-56b8-965a-d5e8f7d78a66\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"Conceptually, how do “receiving application” (MSH-5) and “receiving facility” (MSH-6) differ?\"\nback: \"MSH-5 – Receiving application: the target system that should receive/consume the message.\\nMSH-6 – Receiving facility: the organization or site that owns that receiving application instance.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/03a1b79c-00de-59ad-b59b-2914e064b6e7.md",
+      "content": "---\ntype: flashcard_card\nid: \"03a1b79c-00de-59ad-b59b-2914e064b6e7\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"Conceptually, how do “sending application” (MSH-3) and “sending facility” (MSH-4) differ?\"\nback: \"MSH-3 – Sending application: the software/application instance sending the message (e.g., LABLIS).\\nMSH-4 – Sending facility: the organization or site the application represents (e.g., MAINHOSPITAL).\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/aefe8f35-21dd-5c9f-b41f-259eb89f0f07.md",
+      "content": "---\ntype: flashcard_card\nid: \"aefe8f35-21dd-5c9f-b41f-259eb89f0f07\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"Describe the components of the message type field (MSH-9).\"\nback: \"<Message code> ^ <Trigger event> ^ <Message structure>\\nExample: ADT^A01^ADT_A01\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/4d042900-0fc2-58b4-8477-4d72d5d69aed.md",
+      "content": "---\ntype: flashcard_card\nid: \"4d042900-0fc2-58b4-8477-4d72d5d69aed\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"How are Z-segments named, and what are they used for?\"\nback: \"Z-segments are locally defined extension segments whose names start with “Z” (e.g., ZBX).\\nThey are used to carry site-specific data not covered by the base standard.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/07b3c211-377b-5baa-a031-139b4bd2bb53.md",
+      "content": "---\ntype: flashcard_card\nid: \"07b3c211-377b-5baa-a031-139b4bd2bb53\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"In an HL7 v2 message, how are segments separated from one another?\"\nback: \"Segments are separated by a carriage return (CR) character.\\nExample: MSH...<CR>PID...<CR>PV1...<CR>\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/cc94f554-196b-5125-8102-eec6827e1589.md",
+      "content": "---\ntype: flashcard_card\nid: \"cc94f554-196b-5125-8102-eec6827e1589\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"In MSH-9, what is the relationship between the message code and the trigger event? Give an example.\"\nback: \"The message code describes the general type of interaction (e.g., ADT, ORM, ORU, ACK).\\nThe trigger event describes why the message was sent (e.g., A01 admit, R01 result).\\nExample: ADT^A01 – an ADT message triggered by an A01 (admit/visit notification) event.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/7f95fbcc-d2ba-50fc-96ca-95590b2e90ad.md",
+      "content": "---\ntype: flashcard_card\nid: \"7f95fbcc-d2ba-50fc-96ca-95590b2e90ad\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"List, in order, the default characters in MSH-2 (encoding characters).\"\nback: \"^ – Component separator\\n~ – Repetition separator\\n\\\\ – Escape character\\n& – Subcomponent separator\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/754f4dc1-5e44-5c15-9fc7-537503c73a62.md",
+      "content": "---\ntype: flashcard_card\nid: \"754f4dc1-5e44-5c15-9fc7-537503c73a62\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What are the required fields in an MSH segment in HL7 v2.8?\"\nback: \"MSH-1 – Field separator\\nMSH-2 – Encoding characters\\nMSH-7 – Date/Time of message\\nMSH-9 – Message type\\nMSH-10 – Message control ID\\nMSH-11 – Processing ID\\nMSH-12 – Version ID\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/430955f2-b021-5287-a52c-eaedfc15e325.md",
+      "content": "---\ntype: flashcard_card\nid: \"430955f2-b021-5287-a52c-eaedfc15e325\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What character is used to indicate repeating values within a single field? Give an example.\"\nback: \"The repetition separator is \\\"~\\\".\\nExample: two phone numbers in a repeating telecom field:\\n^PRN^PH^^^555^1234~^ORN^CP^^^555^9999\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/da833e9a-ef18-52da-bed9-97f847b2750e.md",
+      "content": "---\ntype: flashcard_card\nid: \"da833e9a-ef18-52da-bed9-97f847b2750e\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What constraints exist on the choice of delimiter characters in an HL7 message?\"\nback: \"They must be printable from the allowed set, must not appear unescaped in data, and all communicating systems must agree on them (as defined in MSH-1 and MSH-2).\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/9e296c2f-19b8-5e1e-aa2a-6d41d129ba3d.md",
+      "content": "---\ntype: flashcard_card\nid: \"9e296c2f-19b8-5e1e-aa2a-6d41d129ba3d\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What is the purpose of MSH-1, and where is it physically located in the message?\"\nback: \"MSH-1 is the field separator. It is the single character immediately after \\\"MSH\\\".\\nExample: MSH|^~\\\\&|... (here, \\\"|\\\" is MSH-1).\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/964cfb52-4caa-598a-bdc3-51c09667516d.md",
+      "content": "---\ntype: flashcard_card\nid: \"964cfb52-4caa-598a-bdc3-51c09667516d\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What is the purpose of the escape character, and give one example of an escape sequence.\"\nback: \"The escape character \\\"\\\\\\\" allows delimiter characters to appear in data fields using escape sequences.\\nExamples:\\n\\\\F\\\\ – literal field separator (|)\\n\\\\S\\\\ – literal component separator (^)\\n\\\\R\\\\ – literal repetition separator (~)\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/d888de74-8acb-5c86-bb0b-febc19df2dea.md",
+      "content": "---\ntype: flashcard_card\nid: \"d888de74-8acb-5c86-bb0b-febc19df2dea\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What is the third component of MSH-9, and why was it added?\"\nback: \"The third component is the message structure (e.g., ADT_A01).\\nIt explicitly identifies the structure definition (segment order, required/optional segments), since multiple trigger events can share the same structure.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/6d1707fa-6f3e-5418-8594-7bb530e42e03.md",
+      "content": "---\ntype: flashcard_card\nid: \"6d1707fa-6f3e-5418-8594-7bb530e42e03\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What MSH field indicates how the message should be processed (e.g., production vs test), and what are the usual values?\"\nback: \"MSH-11 – Processing ID.\\nCommon values:\\nP – Production\\nT – Training\\nD – Debug/debugging/test\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/e9a0102d-7c42-57a6-8d91-c595b7848305.md",
+      "content": "---\ntype: flashcard_card\nid: \"e9a0102d-7c42-57a6-8d91-c595b7848305\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What MSH field indicates the HL7 version being used, and why is it important?\"\nback: \"MSH-12 – Version ID.\\nIt tells the receiver which HL7 v2 version (e.g., 2.3, 2.5, 2.8) the message follows, affecting segment definitions, data types, and requirements.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/32e77f8a-4620-54de-b5c3-4b617aba0388.md",
+      "content": "---\ntype: flashcard_card\nid: \"32e77f8a-4620-54de-b5c3-4b617aba0388\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What MSH field indicates the message type?\"\nback: \"MSH-9 – Message type.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/8ba17596-1ca6-5837-8bc9-b1130f0633d1.md",
+      "content": "---\ntype: flashcard_card\nid: \"8ba17596-1ca6-5837-8bc9-b1130f0633d1\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What MSH fields indicate the receiving application and receiving facility?\"\nback: \"MSH-5 – Receiving application\\nMSH-6 – Receiving facility\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/15164a37-dae0-54c1-8f6a-5f213068e394.md",
+      "content": "---\ntype: flashcard_card\nid: \"15164a37-dae0-54c1-8f6a-5f213068e394\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"What MSH fields indicate the sending application and sending facility?\"\nback: \"MSH-3 – Sending application\\nMSH-4 – Sending facility\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/8bcd26ee-ae1b-546e-8196-5e7a726ae2fe.md",
+      "content": "---\ntype: flashcard_card\nid: \"8bcd26ee-ae1b-546e-8196-5e7a726ae2fe\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"Which character is the default truncation character in HL7 v2, and what is it used for?\"\nback: \"# – It is the truncation character, indicating that the data has been deliberately cut off at that point (e.g., because of length limits).\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/a5647de8-f798-5e45-a0cd-6046491ad790.md",
+      "content": "---\ntype: flashcard_card\nid: \"a5647de8-f798-5e45-a0cd-6046491ad790\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"Which characters in an HL7 v2 message are considered delimiters/encoding characters?\"\nback: \"Field separator – usually | (MSH-1)\\nComponent separator – ^\\nRepetition separator – ~\\nEscape character – \\\\\\nSubcomponent separator – &\\n(Plus, truncation character – default # – as an additional encoding character)\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "cards/ca93f8ac-3d49-52dc-9219-8a46b6f42517.md",
+      "content": "---\ntype: flashcard_card\nid: \"ca93f8ac-3d49-52dc-9219-8a46b6f42517\"\ndeckId: \"61b91d24-04f7-5b74-b648-71eab7a5512e\"\nfront: \"Which MSH field is used to uniquely identify a message, and what property must it have?\"\nback: \"MSH-10 – Message control ID.\\nIt must be unique (within the sending system’s namespace) so receivers can detect duplicates and match acknowledgments.\"\ncreatedAt: \"2026-10-11T08:00:00.000Z\"\nupdatedAt: \"2026-10-11T08:00:00.000Z\"\nstreak: 0\nintervalDays: 0\nnextReviewAt: \"2026-10-11T08:00:00.000Z\"\ndeck: \"../decks/61b91d24-04f7-5b74-b648-71eab7a5512e.md\"\n---\n"
+    }
+  ]
+}

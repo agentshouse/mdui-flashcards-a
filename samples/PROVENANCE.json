@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/megafarad/barabara",
+  "commit": "4005955f9fc6865f4eca20496ac15e36579b80d8",
+  "source": "src/data/exampleData.ts",
+  "license": "MIT",
+  "source_sha256": "26d8b3d8b912c4556c4ffe14e09faf5a04c72d3da7f3df171cd39a88ae1e667a",
+  "license_sha256": "206d5a0ab3aec79e0ac57deab6368a53a8256b9fc1c761beedcf9290d3f42410",
+  "counts": {
+    "decks": 1,
+    "cards": 21
+  },
+  "transform": [
+    "All 21 donor front/back pairs and the single deck are retained verbatim, with original initial review values.",
+    "Replace random UUIDv7 and current time with stable namespaced UUID-shaped IDs and a fixed import timestamp; preserve deck relationships.",
+    "Add the schema-required relative deck document reference. No student, patient, practice-history, media or Agent output records.",
+    "The sample explains software message structure; it does not contain patient data. Operator-only files, never automatically seeded or imported by the UI."
+  ]
+}

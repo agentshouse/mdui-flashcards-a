@@ -1,0 +1,27 @@
+{
+  "result": "passed",
+  "files": 25,
+  "bytes": 2072542,
+  "mebibytes": 1.977,
+  "references": [
+    "icon.svg",
+    "assets/index-DcbB8Iot.js",
+    "assets/index-Kk15gATD.css",
+    "artwork/card-1.svg",
+    "artwork/card-2.svg",
+    "artwork/card-3.svg",
+    "artwork/card-4.svg",
+    "artwork/card-5.svg",
+    "artwork/card-6.svg",
+    "artwork/card-7.svg",
+    "artwork/card-8.svg",
+    "artwork/card-9.svg",
+    "markdown-help.html",
+    "LICENSE.txt",
+    "THIRD_PARTY_NOTICES.txt"
+  ],
+  "manifestSha256": "ff09ecced42d7c2281d8f8e592e6bfb7cbc463f945e64f4f8897e8fe1633c531",
+  "networkScope": "Static entry, CSS, donor URLs, literal request audit and Markdown tests. Hosted network capture not yet run.",
+  "browser": "Hosted desktop/360px unverified",
+  "publication": "Static artifact audit; remote release and binding status verified separately"
+}
