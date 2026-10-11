@@ -13,7 +13,8 @@
     "release:check": "node scripts/check-release.mjs",
     "theme:check": "node scripts/check-markdown-theme.mjs",
     "prebuild": "node scripts/prepare-release.mjs",
-    "notices": "node scripts/generate-notices.mjs"
+    "notices": "node scripts/generate-notices.mjs",
+    "publish": "node publish.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -1,9 +1,0 @@
-# Changes from the pinned donor
-
-2026-10-11: Match Markdown previews and editors to the donor's light canvas. The library's automatic OS dark palette previously supplied pale text while the port's transparent-preview background exposed the light cards. Explicit light mode restores dark text and coordinated editor/syntax colors without changing donor CSS, layout or Room data. Separately, strengthen donor light-surface helper labels and collection-name placeholder from zinc-400 to zinc-600 while preserving decorative icons, dark-theme branches and button colors. Added failing-before/passing-after theme-boundary tests, six helper-page regressions, and a built-CSS cascade/contrast check.
-
-2026-10-11: First House local candidate. Retained original screens, CSS and repetition algorithm; replaced persistence with observed typed Room documents and current bridge runtime. Added draft CAS/concurrency validation, local safety and interruption tests, one-time synthetic Room fixtures, JSON Schema, static release and license audits. Replaced donor branding/external unverified art with original local assets. Hosted/publication checks remain pending.
-
-2026-10-11: Independent source review corrections. Preserve exact Markdown whitespace across editor validation, Room reads and grade-only saves. Restore creation-time collection/card order and locate a newly saved card’s actual observed page without duplicate appends. Restore the donor’s three-column desktop informational cards. Protect reopened collection-rename drafts from stale save callbacks. Added regressions; hosted acceptance remains pending.
-
-2026-10-11 Master1150: Replaced invented fixtures with the complete pinned MIT donor example deck and21cards. Added exact source/license hashes, deterministic operator transformation, schema/reference validation and provenance regression coverage. No UI or live behavior changed.
