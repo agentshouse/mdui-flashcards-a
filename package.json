@@ -30,7 +30,7 @@
     "rehype-sanitize": "^6.0.0",
     "uuid": "^13.0.0",
     "zod": "^4.1.13",
-    "@agentshouse/app-bridge": "0.1.0-ce524f6608238"
+    "@agentshouse/app-bridge": "0.1.0-ca4ec913df08d"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

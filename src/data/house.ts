@@ -1,10 +1,10 @@
-import {connectHouseBridge} from '@agentshouse/app-bridge';
+import {houseBridge} from '@agentshouse/app-bridge';
 import {z} from 'zod';
 import {v7 as uuidv7} from 'uuid';
 import type {Card, Deck} from './model';
 import type {DataStore} from './dataStore';
 
-type Runtime = Awaited<ReturnType<typeof connectHouseBridge>['runtime']>;
+type Runtime = Awaited<ReturnType<typeof houseBridge>['runtime']>;
 type Parts = Parameters<Runtime['roomDraft']['write']>[3];
 type Document = {room: string; path: string; type?: string; fields?: Readonly<Record<string, unknown>>; markdown?: string};
 const uuid = z.uuid();
@@ -18,7 +18,7 @@ export const flashcardQuery = {types: ['flashcard_deck', 'flashcard_card'], sele
 export type StoreSnapshot = {decks: Deck[]; cards: Card[]; loading: boolean; error: string | null; status: string; halted: boolean; busy: boolean; version: number};
 let connection: Promise<Runtime> | undefined;
 export function houseRuntime() {
-  connection ??= (async () => {const bridge = connectHouseBridge(); bridge.setTab({title: 'Flashcards'}); return bridge.runtime;})();
+  connection ??= (async () => {const bridge = houseBridge(); bridge.setTab({title: 'Flashcards'}); return bridge.runtime;})();
   return connection;
 }
 const errorText = (e: unknown) => e instanceof Error ? e.message : String(e);

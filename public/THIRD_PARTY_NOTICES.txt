@@ -17,7 +17,7 @@ Original replacement artwork in artwork/ and icon.svg is supplied under this App
 Dependency notices below cover the installed production dependency closure, a superset of the actual runtime bundle. Build/test tools are not bundled.
 
 ========================================================================
-@agentshouse/app-bridge 0.1.0-ce524f6608238
+@agentshouse/app-bridge 0.1.0-ca4ec913df08d
 License: MIT
 
 
@@ -46,7 +46,7 @@ SOFTWARE.
 
 
 ========================================================================
-@agentshouse/mdmodel 0.1.0-c68e2039f1ca8
+@agentshouse/mdmodel 0.1.0-c64dbada0730d
 License: MIT
 
 
@@ -75,7 +75,7 @@ SOFTWARE.
 
 
 ========================================================================
-@agentshouse/mdruntime 0.1.0-cff8ba8fa2542
+@agentshouse/mdruntime 0.1.0-cf6d5f0a5c9c8
 License: MIT
 
 
