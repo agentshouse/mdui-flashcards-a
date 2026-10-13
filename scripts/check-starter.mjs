@@ -1,3 +1,4 @@
+import { checkCurrentStarter } from './check-current-starter.mjs';
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -17,9 +18,8 @@ function walk(directory) {
 walk('starter')
 assert(Object.keys(documents).length > 0)
 assert.equal(validate({ 'settings/schema.yaml': schema, ...documents }, { binaryTargets: [] }, model.model).verdict, 'accept')
-const originals = new Map(JSON.parse(fs.readFileSync('test/support/donor-seed-changes.json', 'utf8')).changes.map(row => [row.path, row.content]))
+checkCurrentStarter(documents);
 for (const [file, content] of Object.entries(documents)) {
-  assert.equal(content, originals.get(file), 'Starter must preserve original licensed example paths and bytes.')
   const result = parse(content, file); assert(result.ok)
   if (result.document.type === 'flashcard_card') {
     const reference = path.posix.normalize(path.posix.join(path.posix.dirname(file), result.document.fields.deck))
@@ -28,4 +28,4 @@ for (const [file, content] of Object.entries(documents)) {
     assert.equal(result.document.fields.deckId, deck.document.fields.id)
   }
 }
-console.log(`PASS: ${Object.keys(documents).length} original licensed starter records with deck closure.`)
+console.log(`PASS: ${Object.keys(documents).length} current Starter records with deck closure.`)

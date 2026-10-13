@@ -120,7 +120,7 @@ export class HouseDataStore implements DataStore {
       };
       await Promise.all([
         watch(md.observe('service-mode'), value => this.emit({halted: value === 'write-halted'})),
-        watch(md.observe('connection-refusal'), value => {if (value) this.fail(`House connection refused: ${value.reason}`);}),
+        watch(md.observe('connection-refusal'), value => {if (value) this.fail(`House connection refused: ${value.code}`);}),
         watch(md.observe('storage-loss'), value => {if (value) this.fail('House reports that unsynchronized drafts or pending changes were lost. Check the Room before continuing.');}),
       ]);
       await loadingQuery;
@@ -245,7 +245,7 @@ export class HouseDataStore implements DataStore {
           schema.parse(fieldsOf(draft));
           if (draft) {
             const result = await runtime.save(room, [{path, revision: draft.revision}]);
-            if (result.outcome !== 'saved') throw new Error(`House refused the save (${result.outcome}${'rule' in result ? `: ${result.rule}` : ''}). Your draft is retained.`);
+            if (result.outcome !== 'saved') throw new Error(`House refused the save (${result.outcome}${'code' in result ? `: ${result.code}` : ''}). Your draft is retained.`);
           }
         });
         return (type === 'flashcard_deck' ? this.state.decks : this.state.cards).find(item => item.id === base.id) as Deck | Card;
@@ -279,7 +279,7 @@ export class HouseDataStore implements DataStore {
     }
     if (!this.bindingReady || this.room !== room) throw new Error("The Room binding changed during save. Your drafts are retained.");
     const result = await md.save(room, drafts);
-    if (result.outcome !== 'saved') throw new Error(`House refused the save (${result.outcome}${'rule' in result ? `: ${result.rule}` : ''}). Your drafts are retained in House; review them before retrying.`);
+    if (result.outcome !== 'saved') throw new Error(`House refused the save (${result.outcome}${'code' in result ? `: ${result.code}` : ''}). Your drafts are retained in House; review them before retrying.`);
   }
   private async upsert<T extends Deck | Card>(input: T, type: 'flashcard_deck' | 'flashcard_card'): Promise<T> {
     const schema = type === 'flashcard_deck' ? deckSchema : cardFieldsSchema;

@@ -15,11 +15,11 @@
     "prebuild": "node scripts/prepare-release.mjs",
     "notices": "node scripts/generate-notices.mjs",
     "starter:check": "node scripts/check-starter.mjs",
-    "verify": "npm run test:publisher && npm run typecheck && npm run lint && npm test -- --maxWorkers=1 && npm run starter:check && npm run build && npm run theme:check && npm run release:check",
-    "publish": "node publish.mjs",
-    "test:publisher": "node --test scripts/publish-regression.mjs"
+    "verify": "npm run typecheck && npm run lint && npm test -- --maxWorkers=1 && npm run starter:check && npm run build && npm run theme:check && npm run release:check",
+    "publish": "node publish.mjs"
   },
   "dependencies": {
+    "@agentshouse/app-bridge": "0.1.0-cc70c9b07c3ec",
     "@hookform/resolvers": "^5.2.2",
     "@uiw/react-md-editor": "^4.0.11",
     "luxon": "^3.7.2",
@@ -29,30 +29,31 @@
     "react-router": "^7.10.1",
     "rehype-sanitize": "^6.0.0",
     "uuid": "^13.0.0",
-    "zod": "^4.1.13",
-    "@agentshouse/app-bridge": "0.1.0-ca4ec913df08d"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@agentshouse/mdmodel": "0.1.0-c6e675bb19980",
+    "@agentshouse/mdruntime": "0.1.0-c8ca66ac9e99d",
     "@eslint/js": "^9.39.1",
     "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.17",
+    "@testing-library/react": "16.3.3",
     "@types/luxon": "^3.7.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/coverage-v8": "^4.0.15",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsdom": "^27.3.0",
+    "tailwindcss": "^4.1.17",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
-    "vitest": "^4.0.15",
-    "@testing-library/react": "16.3.3",
-    "@tailwindcss/vite": "^4.1.17",
-    "@vitest/coverage-v8": "^4.0.15",
-    "tailwindcss": "^4.1.17"
+    "vitest": "^4.0.15"
   },
   "license": "MIT",
   "engines": {

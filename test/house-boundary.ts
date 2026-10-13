@@ -144,28 +144,28 @@ export class Boundary {
     selections.forEach(item => expect(Object.keys(item).sort()).toEqual(['path', 'revision']));
     if (this.saveGate) await this.saveGate;
     this.beforeSave?.();
-    if (this.nextSaveRule) return {outcome: 'refused', rule: this.nextSaveRule};
+    if (this.nextSaveRule) return {outcome: 'refused', code: this.nextSaveRule, retryable: false};
     const next = new Map([...this.docs].map(([path, doc]) => [path, clone(doc)]));
     for (const selection of selections) {
       const draft = this.drafts.get(selection.path);
-      if (!draft || draft.revision !== selection.revision) return {outcome: 'refused', rule: 'stale'};
+      if (!draft || draft.revision !== selection.revision) return {outcome: 'refused', code: 'stale', retryable: false};
       const current = next.get(selection.path);
       if (draft.parts.creation) {
-        if (current) return {outcome: 'refused', rule: 'changed-underneath'};
+        if (current) return {outcome: 'refused', code: 'changed-underneath', retryable: false};
         if (!('type' in draft.parts.creation)) throw new Error('Unexpected raw-markdown creation');
         const {type, fields, sections} = draft.parts.creation;
         expect(sections).toEqual({});
         next.set(selection.path, {room: ROOM, path: selection.path, type, fields: clone({...fields}), markdown: markdown(type, fields)});
       } else if (draft.parts.fields) {
-        if (!current) return {outcome: 'refused', rule: 'changed-underneath'};
+        if (!current) return {outcome: 'refused', code: 'changed-underneath', retryable: false};
         for (const [key, change] of Object.entries(draft.parts.fields)) {
           const base = key in current.fields ? {value: current.fields[key]} : null;
-          if (!same(base, change.base)) return {outcome: 'refused', rule: 'changed-underneath'};
+          if (!same(base, change.base)) return {outcome: 'refused', code: 'changed-underneath', retryable: false};
           current.fields[key] = clone(change.value);
         }
         current.markdown = markdown(current.type, current.fields);
       } else if (draft.parts.removal) {
-        if (!current || current.markdown !== draft.parts.removal.base) return {outcome: 'refused', rule: 'changed-underneath'};
+        if (!current || current.markdown !== draft.parts.removal.base) return {outcome: 'refused', code: 'changed-underneath', retryable: false};
         next.delete(selection.path);
       } else throw new Error('Unexpected Room Draft parts');
     }
@@ -176,10 +176,10 @@ export class Boundary {
       expect(['flashcard_deck', 'flashcard_card']).toContain(doc.type);
       expect(doc.path).toBe(isDeck ? deckPath(String(doc.fields.id)) : cardPath(String(doc.fields.id)));
       if (!isDeck) {
-        if (doc.fields.deck !== `../${deckPath(String(doc.fields.deckId))}`) return {outcome: 'refused', rule: 'invalid-deck-reference'};
+        if (doc.fields.deck !== `../${deckPath(String(doc.fields.deckId))}`) return {outcome: 'refused', code: 'invalid-deck-reference', retryable: false};
         const parentPath = new URL(String(doc.fields.deck), `https://local.test/${doc.path}`).pathname.slice(1);
         const parent = next.get(parentPath);
-        if (parent?.type !== 'flashcard_deck') return {outcome: 'refused', rule: 'missing-reference-target'};
+        if (parent?.type !== 'flashcard_deck') return {outcome: 'refused', code: 'missing-reference-target', retryable: false};
       }
     }
     this.docs = next;

@@ -318,7 +318,7 @@ describe('HouseDataStore using a strict local published-boundary mock', () => {
   });
 
   it.each([
-    ['connection-refusal', {reason: 'revoked-authorization', reauthorizationOffered: true, refusal: null}, /connection refused/i],
+    ['connection-refusal', {code: 'revoked-authorization', retryable: false, reauthorizationOffered: true, refusal: null}, /connection refused/i],
     ['storage-loss', 'lost pending data', /unsynchronized.*lost/i],
     ['rooms', [], /binding changed/i],
   ])('blocks mutations after %s is observed', async (topic, value, message) => {
