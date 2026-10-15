@@ -29,6 +29,12 @@ describe('HouseDataStore using a strict local published-boundary mock', () => {
     expect([...boundary.observations.values()].every(handle => handle.closed && handle.listeners.size === 0)).toBe(true);
   });
 
+  it('keeps completed cards while the observed query is pending', async () => {
+    const {boundary, store} = await setup();
+    boundary.publish('query', {pending: [{room: ROOM, awaits: 'index'}]});
+    expect(store.snapshot()).toMatchObject({decks: [expect.anything()], cards: [expect.anything()], loading: true, error: null});
+  });
+
   it('creates, reads, updates, and deletes one document per entity', async () => {
     const {boundary, store} = await setup([]);
     const createdDeck = await store.upsertDeck(deck());
