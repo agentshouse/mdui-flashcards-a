@@ -76,13 +76,13 @@ export class HouseDataStore implements DataStore {
       const bindings = await md.observe('rooms');
       const sync = await md.observe('sync-status');
       if (this.disposed) {bindings.close(); sync.close(); return;}
-      let query: {current(): {documents: readonly Document[]}; close(): void} | undefined;
+      let query: {current(): {documents: readonly Document[]} | {pending: readonly unknown[]}; close(): void} | undefined;
       let stopQuery: (() => void) | undefined;
       let queryRoom: string | undefined;
       let loadingQuery: Promise<void> | undefined;
       const render = () => {
         if (!this.bindingReady || this.disposed || !query) return;
-        try {this.readDocuments(query.current() as {documents: readonly Document[]});}
+        try {const result=query.current(); if ('pending' in result) {this.emit({loading: true, error: this.fatalError}); return;} this.readDocuments(result);}
         catch (e) {this.emit({loading: false, error: errorText(e)});}
       };
       const showBindings = () => {
