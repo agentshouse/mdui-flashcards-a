@@ -1,0 +1,4 @@
+{
+  "entry": "index.html",
+  "room_slots": [{"name": "flashcards", "access": "write", "types": ["flashcard_deck", "flashcard_card"]}]
+}

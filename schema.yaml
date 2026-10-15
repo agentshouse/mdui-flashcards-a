@@ -1,0 +1,20 @@
+flashcard_deck:
+  properties:
+    id: {type: string, format: uuid}
+    name: {type: string, minLength: 1, maxLength: 200, pattern: '\S'}
+    createdAt: {type: string, format: date-time}
+    updatedAt: {type: string, format: date-time}
+  required: [id, name, createdAt, updatedAt]
+flashcard_card:
+  properties:
+    id: {type: string, format: uuid}
+    deckId: {type: string, format: uuid}
+    deck: {type: string, reference: flashcard_deck}
+    front: {type: string, minLength: 1, maxLength: 50000, pattern: '\S'}
+    back: {type: string, minLength: 1, maxLength: 50000, pattern: '\S'}
+    createdAt: {type: string, format: date-time}
+    updatedAt: {type: string, format: date-time}
+    streak: {type: integer, minimum: 0}
+    intervalDays: {type: integer, minimum: 0, maximum: 60}
+    nextReviewAt: {type: string, format: date-time}
+  required: [id, deckId, deck, front, back, createdAt, updatedAt, streak, intervalDays, nextReviewAt]
